@@ -1,15 +1,15 @@
-# PS 58 – College Management System
+#🎓 PS:58 College Management System
 
-🚀 Project Overview
+## 🚀 Project Overview
 
 The College Management System provides a secure and structured way to manage college-related information through a menu-driven console interface.
 
 It uses different data structures according to their specific purposes and implements security mechanisms to protect sensitive information and prevent unauthorized access.
 
 
-📌 About The Project
+## 📌 About The Project
 
-The College Management System is a menu-driven, console-based Java application developed to simplify college record management while demonstrating the practical implementation of Data Structures and Algorithms (DSA) and Cybersecurity principles.
+The **College Management System** is a menu-driven, console-based Java application developed to simplify college record management while demonstrating the practical implementation of Data Structures and Algorithms (DSA) and Cybersecurity principles.
 
 The application manages student information, courses, marks, attendance, admission requests, and course prerequisites.
 
@@ -17,361 +17,267 @@ Unlike a basic management application, this project integrates multiple data str
 
 It demonstrates how efficient programming and cybersecurity concepts can work together to build a structured and secure application.
 
+## ✨ Key Features
 
-🎓 College Management
+### 🎓 College Management
 
-Add, view, search, and delete student records.
+- Add, view, search, and delete student records.
+- Manage student marks and attendance.
+- Manage course information.
+- Search students using roll numbers and names.
+- Handle admission requests.
+- Maintain course prerequisite relationships.
 
-Manage student marks and attendance.
+### 🧠 Data Structures & Algorithms
 
-Manage course information.
+- ArrayList for student and course management.
+- LinkedList for recent activity tracking.
+- Stack for undoing the latest changes.
+- Queue for first-come-first-served admission processing.
+- Graph for course prerequisite management.
+- Binary Search for efficient roll number lookup.
+- Linear Search for searching student names.
+- BFS and DFS for graph traversal and study paths.
 
-Search students using roll numbers and names.
+### 🔐 Cybersecurity Implementation
 
-Handle admission requests.
+- Salted password hashing using PBKDF2-HMAC-SHA256.
+- Role-Based Access Control (Admin, Faculty, Student).
+- Automatic account lockout after three failed login attempts.
+- Password strength validation.
+- Input validation to reject unsafe data.
+- SHA-256 hash-chained audit logging.
+- Audit log integrity verification.
+- Temporary password change enforcement for new student accounts.
 
-Maintain course prerequisite relationships.
 
-🧠 Data Structures & Algorithms
+## 🛠️ Technology Stack
 
-ArrayList for student and course management.
+| Technology                 | Purpose                              |
+| -------------------------- | ------------------------------------ |
+| Java                       | Core application development         |
+| Java Collections Framework | Data structure implementation        |
+| ArrayList                  | Student and course storage           |
+| LinkedList                 | Activity history and admission queue |
+| Stack                      | Undo operations                      |
+| Queue                      | Admission management                 |
+| Graph                      | Course prerequisite management       |
+| BFS & DFS                  | Graph traversal                      |
+| Binary Search              | Student lookup                       |
+| File Handling              | Persistent data storage              |
+| PBKDF2-HMAC-SHA256         | Password protection                  |
+| SHA-256                    | Audit log integrity                  |
 
-LinkedList for recent activity tracking.
 
-Stack for undoing the latest changes.
+### Core Modules
 
-Queue for first-come-first-served admission processing.
+| Module          | Responsibility                          |
+| --------------- | --------------------------------------- |
+| Main            | Menu-driven application interface       |
+| AuthService     | User authentication and account lockout |
+| CollegeService  | Student and course operations           |
+| SecurityUtil    | Password hashing and validation         |
+| AccessControl   | Role-based permissions                  |
+| ActivityHistory | Recent activity management              |
+| UndoManager     | Reversing recent changes                |
+| AdmissionQueue  | Admission request processing            |
+| CourseGraph     | Course prerequisite management          |
+| AuditLogger     | Security event logging                  |
 
-Graph for course prerequisite management.
 
-Binary Search for efficient roll number lookup.
+## 📚 Data Structures & Algorithms
 
-Linear Search for searching student names.
+One of the main objectives of this project is to demonstrate the practical application of different data structures.
 
-BFS and DFS for graph traversal and study paths.
+| Data Structure | Application                | Operations                |
+| -------------- | -------------------------- | ------------------------- |
+| ArrayList      | Student and course records | Add, Get, Sort            |
+| LinkedList     | Recent activity history    | addFirst(), removeLast()  |
+| Stack          | Undo functionality         | push(), pop(), peek()     |
+| Queue          | Admission requests         | offer(), poll(), peek()   |
+| Graph          | Course prerequisites       | BFS, DFS, Cycle Detection |
 
-🔐 Cybersecurity Implementation
+### 🔍 Searching Algorithms
 
-Salted password hashing using PBKDF2-HMAC-SHA256.
+**1. Binary Search**
 
-Role-Based Access Control (Admin, Faculty, Student).
+Used to search students by roll number. The student records are maintained in sorted order, allowing efficient searching.
 
-Automatic account lockout after three failed login attempts.
+Time Complexity: `O(log N)`
 
-Password strength validation.
+**2. Linear Search**
 
-Input validation to reject unsafe data.
+Used to search students by name, including partial name matches.
 
-SHA-256 hash-chained audit logging.
+Time Complexity: `O(N)`
 
-Audit log integrity verification.
+### 🌐 Graph Algorithms
 
-Temporary password change enforcement for new student accounts.
+- **Breadth-First Search (BFS):** Finds all prerequisites of a selected course.
+- **Depth-First Search (DFS):** Generates a recommended study order.
+- **Cycle Detection:** Prevents invalid circular prerequisite relationships.
 
-🧠 Data Structures & Algorithms
 
-Data Structure / Algorithm
+## 🔐 Cybersecurity Architecture
 
-Implementation
+Security is an important part of this application.
 
-ArrayList
+| Security Threat     | Security Control                      |
+| ------------------- | ------------------------------------- |
+| Password theft      | Salted PBKDF2-HMAC-SHA256 hashing     |
+| Weak passwords      | Password complexity validation        |
+| Brute-force attacks | Lockout after 3 failed attempts       |
+| Unauthorized access | Role-Based Access Control             |
+| Invalid input       | Regex-based input validation          |
+| Audit log tampering | SHA-256 hash chaining                 |
+| Default passwords   | Temporary password change requirement |
 
-Stores students and courses
+### CIA Triad Implementation
 
-LinkedList
+- **Confidentiality:** Password hashing and role-based permissions.
+- **Integrity:** Input validation and tamper-evident audit logging.
+- **Availability:** Persistent file storage and administrative account unlocking.
 
-Maintains the last 10 recent activities
 
-Stack
+## ⚙️ Installation & Execution
 
-Implements Undo functionality
+### Prerequisites
 
-Queue
+- Java Development Kit (JDK 8 or above).
+- VS Code or IntelliJ IDEA.
+- Command Prompt or Terminal.
 
-Processes admission requests using FIFO
+### 1. Clone the Repository
 
-Graph
-
-Manages course prerequisites
-
-Binary Search
-
-Searches students by roll number
-
-Linear Search
-
-Searches students by name
-
-BFS
-
-Finds all course prerequisites
-
-DFS
-
-Generates a recommended study order
-
-🔐 Cybersecurity Features
-
-Password Hashing: PBKDF2-HMAC-SHA256 with a random 16-byte salt and 65,536 iterations.
-
-Role-Based Access Control (RBAC): Separate permissions for Admin, Faculty, and Student.
-
-Account Lockout: Locks accounts after 3 consecutive failed login attempts.
-
-Input Validation: Rejects invalid formats and unsafe input characters.
-
-Audit Logging: SHA-256 hash-chained audit log to detect unauthorized modifications.
-
-Password Policy: Requires at least 8 characters, including uppercase, lowercase, numbers, and symbols.
-
-🛠️ Technologies Used
-
-Java
-
-Java Collections Framework
-
-Data Structures and Algorithms
-
-Object-Oriented Programming (OOP)
-
-File Handling
-
-PBKDF2-HMAC-SHA256
-
-SHA-256
-
-Role-Based Access Control
-
-🏗️ Project Architecture
-
-The project is organized into modular Java classes, with each class responsible for a specific functionality.
-
-Class
-
-Responsibility
-
-Student, Course, User
-
-Data models
-
-CollegeService
-
-Student and course management
-
-ActivityHistory
-
-Recent activity using LinkedList
-
-UndoManager, UndoAction
-
-Undo functionality using Stack
-
-AdmissionQueue
-
-Admission processing using Queue
-
-CourseGraph
-
-Course prerequisites using Graph
-
-AuthService
-
-Authentication and account lockout
-
-SecurityUtil
-
-Password hashing and input validation
-
-AccessControl
-
-Role-based permissions
-
-AuditLogger
-
-Tamper-evident audit logging
-
-Main
-
-Main menu and application interface
-
-DemoRunner
-
-Automatic feature demonstration
-
-⚙️ Installation & Execution
-
-Prerequisites
-
-Java Development Kit (JDK 8 or above)
-
-VS Code / IntelliJ IDEA
-
-Command Prompt or Terminal
-
-Step 1: Clone the Repository
-
+```bash
 git clone https://github.com/YOUR-USERNAME/College-Management-System.git
+```
 
-Step 2: Open the Project Directory
+### 2. Navigate to the Project Directory
 
+```bash
 cd College-Management-System
+```
 
-Step 3: Compile the Java Files
+### 3. Compile the Application
 
+```bash
 javac -d out src/*.java
+```
 
-Step 4: Run the Application
+### 4. Run the Application
 
+```bash
 java -cp out Main
+```
 
-🔑 Default Login Credentials
+---
 
-The following accounts are created on the first execution:
+## 🔑 Default Login Credentials
 
-Role
+The application creates demonstration accounts on its first execution.
 
-Username
+| Role    | Username    | Password     |
+| ------- | ----------- | ------------ |
+| Admin   | admin       | Admin\@123   |
+| Faculty | faculty1    | Faculty\@123 |
+| Student | RU-25-10479 | Student\@123 |
 
-Password
 
-Admin
 
-admin
+## 💾 File Storage System
 
-Admin@123
+The application uses file handling to save and retrieve information.
 
-Faculty
+| File              | Description              |
+| ----------------- | ------------------------ |
+| users.txt         | User account information |
+| students.txt      | Student records          |
+| courses.txt       | Course information       |
+| admissions.txt    | Admission requests       |
+| prerequisites.txt | Course prerequisite data |
+| audit.log         | Security audit records   |
 
-faculty1
+All these files are maintained inside the runtime `data` directory.
 
-Faculty@123
+---
 
-Student
-
-RU-25-10479
-
-Student@123
-
-Note: These are demonstration credentials. Change default passwords before using the application with real data.
-
-📂 Data Storage
-
-The application automatically creates a data folder to store records.
-
-File
-
-Purpose
-
-users.txt
-
-User account information
-
-students.txt
-
-Student records
-
-courses.txt
-
-Course records
-
-admissions.txt
-
-Admission requests
-
-prerequisites.txt
-
-Course prerequisite relationships
-
-audit.log
-
-Hash-chained security audit log
-
-📊 Time Complexity Analysis
+## 📊 Time Complexity Analysis
 
 Let:
 
-N = Number of students
+- N = Number of students
+- V = Number of courses
+- E = Number of prerequisite connections
+- L = Number of audit log entries
 
-V = Number of courses
+| Operation                     | Time Complexity |
+| ----------------------------- | --------------- |
+| Search by Roll Number         | O(log N)        |
+| Search by Name                | O(N)            |
+| Record Activity               | O(1)            |
+| Undo Operation                | O(1)            |
+| Queue Operations              | O(1)            |
+| Graph Cycle Detection         | O(V + E)        |
+| BFS Traversal                 | O(V + E)        |
+| DFS Traversal                 | O(V + E)        |
+| Audit Integrity Check         | O(L)            |
+| Display / Load / Save Records | O(N)            |
 
-E = Number of prerequisite connections
 
-L = Number of audit log entries
+## 🧪 Testing & Demonstration
 
-Operation
+The project report documents the following test scenarios:
 
-Time Complexity
+| Test Case             | Expected Result                   |
+| --------------------- | --------------------------------- |
+| Add Student           | Student record successfully added |
+| Search by Roll Number | Student found using Binary Search |
+| Invalid Roll Number   | Input rejected                    |
+| Student Not Found     | Appropriate message displayed     |
+| Three Failed Logins   | Account locked                    |
+| Admission Request     | Added to Queue                    |
+| Process Admission     | FIFO processing                   |
+| Undo Operation        | Latest change reversed            |
+| Course Prerequisites  | BFS and DFS results generated     |
 
-Search by Roll Number
+### Suggested Demo Workflow
 
-O(log N)
+1. Login as Admin.
+2. Add a new student.
+3. Search for the student by roll number.
+4. Update marks and attendance.
+5. Test the Undo feature.
+6. Add and process admission requests.
+7. Explore course prerequisites.
+8. Check recent activity and audit log.
 
-Search by Name
 
-O(N)
-
-Record Recent Activity
-
-O(1)
-
-Undo Operation
-
-O(1)
-
-Admission Queue Operations
-
-O(1)
-
-Add Prerequisite with Cycle Detection
-
-O(V + E)
-
-BFS / DFS Traversal
-
-O(V + E)
-
-Audit Log Integrity Check
-
-O(L)
-
-🔮 Future Enhancements
+## 🚀 Future Enhancements
 
 The following features can be considered for future versions:
 
-MySQL Database Integration
-
-Graphical User Interface using Java Swing or JavaFX
-
-Two-Factor Authentication (2FA)
-
-AES Encryption for stored data
-
-Fee and Timetable Management
-
-Priority Queue for merit-based admissions
-
-Web-Based College Management System
-
-Campus Navigation using Dijkstra's Algorithm
-
-🎯 Learning Outcomes
-
-Through this project, I gained practical experience in:
-
-Implementing different data structures in Java.
-
-Applying Binary Search, Linear Search, BFS, and DFS.
-
-Understanding Stack, Queue, LinkedList, and Graph operations.
-
-Applying Object-Oriented Programming concepts.
-
-Implementing password hashing and authentication.
-
-Understanding Role-Based Access Control.
-
-Applying cybersecurity principles and secure coding practices.
-
-Analyzing algorithm time complexity.
+- MySQL Database Integration
+- Graphical User Interface using Java Swing or JavaFX
+- Two-Factor Authentication (2FA)
+- AES Encryption for stored data
+- Fee and Timetable Management
+- Priority Queue for merit-based admissions
+- Web-Based College Management System
+- Campus Navigation using Dijkstra's Algorithm
 
 
+## 🎯 Learning Outcomes
+
+This project helped me understand and implement:
+
+- Core Java and Object-Oriented Programming.
+- Java Collections Framework.
+- Fundamental Data Structures and Algorithms.
+- Searching and graph traversal algorithms.
+- Time complexity analysis.
+- File handling and data persistence.
+- Password hashing and authentication.
+- Role-Based Access Control.
+- Secure input validation.
+- Audit logging and data integrity.
