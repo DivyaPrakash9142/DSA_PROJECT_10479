@@ -1,65 +1,377 @@
 # PS 58 – College Management System
 
-**Student:** Divya Prakash | **ERP:** RU-25-10479 | **Course:** Data Structures and Algorithms (RU-100-01-00029)
-**Language:** Java (single file, no external libraries) | **Data file:** `college_data.txt`
+🚀 Project Overview
 
-## Problem
-A console system to manage students, faculty and courses, with undo of the latest record change,
-a queue of service requests, and a graph of course relationships.
+The College Management System provides a secure and structured way to manage college-related information through a menu-driven console interface.
 
-## Run
-```
-javac CollegeManagementSystem.java
-java CollegeManagementSystem            # uses college_data.txt in the current folder
-java CollegeManagementSystem other.txt  # optional: use a different data file
-```
+It uses different data structures according to their specific purposes and implements security mechanisms to protect sensitive information and prevent unauthorized access.
 
-## Data structures used
-| Need | Structure | Where |
-|---|---|---|
-| Student / faculty / course records | Hand-written singly linked list (`SinglyLinkedList`) | add, insert-at-index (for undo), remove-at-index, search |
-| Undo latest change | Linked stack (`LinkedStack<UndoAction>`) | each change pushes an action that reverses it |
-| Service requests | Linked queue (`LinkedQueue`) | FIFO submit / process / view |
-| Course relationships | Directed graph, adjacency lists in `ArrayList` (`CourseGraph`) | "course requires prerequisite"; BFS for all prerequisites; cycle check |
-| Persistence | Text file | loaded at startup, saved on exit |
 
-Record classes: `Student`, `Faculty`, `Course` (separate classes, all implement `HasId`).
+📌 About The Project
 
-## Features
-1. Add student / faculty / course (IDs auto-generated and unique: `ST101`, `F101`, `C101`, ...)
-2. Display and search (by ID or name) for each record type
-3. Delete a student, faculty or course (a faculty member assigned to a course cannot be deleted)
-4. Add a course prerequisite; display the course graph; list all (transitive) prerequisites using BFS
-5. Submit, process and view service requests (queue)
-6. Undo the latest supported change
+The College Management System is a menu-driven, console-based Java application developed to simplify college record management while demonstrating the practical implementation of Data Structures and Algorithms (DSA) and Cybersecurity principles.
 
-**Undo covers** adding or deleting a student, faculty or course, and adding a prerequisite.
-Service requests are not record changes, so they are not undone.
+The application manages student information, courses, marks, attendance, admission requests, and course prerequisites.
 
-## Validation and safe handling
-- Empty names, names over 60 characters, and the `|` character are rejected.
-- Duplicate IDs are impossible (next ID = highest existing number + 1); duplicate IDs in a loaded file are skipped.
-- Undo on an empty stack prints `Nothing to undo.`; processing an empty queue prints `No pending service requests.`
-- Prerequisites: unknown course, self-prerequisite, duplicate edge, and circular dependency are all rejected.
-- Missing data file = start empty; malformed lines are skipped with a warning count.
-- The file is written to a temp file and renamed, so a crash cannot leave a half-written data file.
-- Closing input (Ctrl+D / Ctrl+Z) also saves and exits.
+Unlike a basic management application, this project integrates multiple data structures and searching algorithms with security mechanisms such as password hashing, Role-Based Access Control (RBAC), account lockout, input validation, and tamper-evident audit logging.
 
-## Test cases from the project description
-| # | Input | Output |
-|---|---|---|
-| 1 Normal | Add student Aman | `Student added. ID: ST101 \| Aman` |
-| 2 Boundary | Process next request with none pending | `No pending service requests.` |
-| 3 Invalid | Search faculty F999 | `Faculty F999 not found.` |
-| 4 Valid | Add Aman, add Riya, undo, display students | `Last operation undone: Add student Riya` then list shows only `ST101 \| Aman` |
+It demonstrates how efficient programming and cybersecurity concepts can work together to build a structured and secure application.
 
-All four were run and produce exactly the expected output.
 
-## Data file format
-```
-STUDENT|ST101|Aman
-FACULTY|F101|Dr Rao|CS
-COURSE|C101|DSA|F101        (last field "-" when no faculty)
-EDGE|C102|C101              (C102 requires C101)
-REQUEST|Fix my ID card
-```
+🎓 College Management
+
+Add, view, search, and delete student records.
+
+Manage student marks and attendance.
+
+Manage course information.
+
+Search students using roll numbers and names.
+
+Handle admission requests.
+
+Maintain course prerequisite relationships.
+
+🧠 Data Structures & Algorithms
+
+ArrayList for student and course management.
+
+LinkedList for recent activity tracking.
+
+Stack for undoing the latest changes.
+
+Queue for first-come-first-served admission processing.
+
+Graph for course prerequisite management.
+
+Binary Search for efficient roll number lookup.
+
+Linear Search for searching student names.
+
+BFS and DFS for graph traversal and study paths.
+
+🔐 Cybersecurity Implementation
+
+Salted password hashing using PBKDF2-HMAC-SHA256.
+
+Role-Based Access Control (Admin, Faculty, Student).
+
+Automatic account lockout after three failed login attempts.
+
+Password strength validation.
+
+Input validation to reject unsafe data.
+
+SHA-256 hash-chained audit logging.
+
+Audit log integrity verification.
+
+Temporary password change enforcement for new student accounts.
+
+🧠 Data Structures & Algorithms
+
+Data Structure / Algorithm
+
+Implementation
+
+ArrayList
+
+Stores students and courses
+
+LinkedList
+
+Maintains the last 10 recent activities
+
+Stack
+
+Implements Undo functionality
+
+Queue
+
+Processes admission requests using FIFO
+
+Graph
+
+Manages course prerequisites
+
+Binary Search
+
+Searches students by roll number
+
+Linear Search
+
+Searches students by name
+
+BFS
+
+Finds all course prerequisites
+
+DFS
+
+Generates a recommended study order
+
+🔐 Cybersecurity Features
+
+Password Hashing: PBKDF2-HMAC-SHA256 with a random 16-byte salt and 65,536 iterations.
+
+Role-Based Access Control (RBAC): Separate permissions for Admin, Faculty, and Student.
+
+Account Lockout: Locks accounts after 3 consecutive failed login attempts.
+
+Input Validation: Rejects invalid formats and unsafe input characters.
+
+Audit Logging: SHA-256 hash-chained audit log to detect unauthorized modifications.
+
+Password Policy: Requires at least 8 characters, including uppercase, lowercase, numbers, and symbols.
+
+🛠️ Technologies Used
+
+Java
+
+Java Collections Framework
+
+Data Structures and Algorithms
+
+Object-Oriented Programming (OOP)
+
+File Handling
+
+PBKDF2-HMAC-SHA256
+
+SHA-256
+
+Role-Based Access Control
+
+🏗️ Project Architecture
+
+The project is organized into modular Java classes, with each class responsible for a specific functionality.
+
+Class
+
+Responsibility
+
+Student, Course, User
+
+Data models
+
+CollegeService
+
+Student and course management
+
+ActivityHistory
+
+Recent activity using LinkedList
+
+UndoManager, UndoAction
+
+Undo functionality using Stack
+
+AdmissionQueue
+
+Admission processing using Queue
+
+CourseGraph
+
+Course prerequisites using Graph
+
+AuthService
+
+Authentication and account lockout
+
+SecurityUtil
+
+Password hashing and input validation
+
+AccessControl
+
+Role-based permissions
+
+AuditLogger
+
+Tamper-evident audit logging
+
+Main
+
+Main menu and application interface
+
+DemoRunner
+
+Automatic feature demonstration
+
+⚙️ Installation & Execution
+
+Prerequisites
+
+Java Development Kit (JDK 8 or above)
+
+VS Code / IntelliJ IDEA
+
+Command Prompt or Terminal
+
+Step 1: Clone the Repository
+
+git clone https://github.com/YOUR-USERNAME/College-Management-System.git
+
+Step 2: Open the Project Directory
+
+cd College-Management-System
+
+Step 3: Compile the Java Files
+
+javac -d out src/*.java
+
+Step 4: Run the Application
+
+java -cp out Main
+
+🔑 Default Login Credentials
+
+The following accounts are created on the first execution:
+
+Role
+
+Username
+
+Password
+
+Admin
+
+admin
+
+Admin@123
+
+Faculty
+
+faculty1
+
+Faculty@123
+
+Student
+
+RU-25-10479
+
+Student@123
+
+Note: These are demonstration credentials. Change default passwords before using the application with real data.
+
+📂 Data Storage
+
+The application automatically creates a data folder to store records.
+
+File
+
+Purpose
+
+users.txt
+
+User account information
+
+students.txt
+
+Student records
+
+courses.txt
+
+Course records
+
+admissions.txt
+
+Admission requests
+
+prerequisites.txt
+
+Course prerequisite relationships
+
+audit.log
+
+Hash-chained security audit log
+
+📊 Time Complexity Analysis
+
+Let:
+
+N = Number of students
+
+V = Number of courses
+
+E = Number of prerequisite connections
+
+L = Number of audit log entries
+
+Operation
+
+Time Complexity
+
+Search by Roll Number
+
+O(log N)
+
+Search by Name
+
+O(N)
+
+Record Recent Activity
+
+O(1)
+
+Undo Operation
+
+O(1)
+
+Admission Queue Operations
+
+O(1)
+
+Add Prerequisite with Cycle Detection
+
+O(V + E)
+
+BFS / DFS Traversal
+
+O(V + E)
+
+Audit Log Integrity Check
+
+O(L)
+
+🔮 Future Enhancements
+
+The following features can be considered for future versions:
+
+MySQL Database Integration
+
+Graphical User Interface using Java Swing or JavaFX
+
+Two-Factor Authentication (2FA)
+
+AES Encryption for stored data
+
+Fee and Timetable Management
+
+Priority Queue for merit-based admissions
+
+Web-Based College Management System
+
+Campus Navigation using Dijkstra's Algorithm
+
+🎯 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+Implementing different data structures in Java.
+
+Applying Binary Search, Linear Search, BFS, and DFS.
+
+Understanding Stack, Queue, LinkedList, and Graph operations.
+
+Applying Object-Oriented Programming concepts.
+
+Implementing password hashing and authentication.
+
+Understanding Role-Based Access Control.
+
+Applying cybersecurity principles and secure coding practices.
+
+Analyzing algorithm time complexity.
+
+
